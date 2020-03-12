@@ -1,7 +1,7 @@
 import pandas as pd
 
-csv_data = pd.read_csv("服创大赛-基站经纬度数据.csv", usecols=['longitude','latitude','laci'])
-data1 = pd.read_csv("未关联数据.csv", usecols=['timestamp','imsi','lac_id','cell_id'])
+csv_data = pd.read_csv("./data/服创大赛-基站经纬度数据.csv", usecols=['longitude','latitude','laci'])
+data1 = pd.read_csv("./data/未关联数据.csv", usecols=['timestamp','imsi','lac_id','cell_id'])
 data1['lac_id'] = data1['lac_id'].astype(str)
 data1['cell_id'] = data1['cell_id'].astype(str)
 data1['laci'] = data1['lac_id']+'-'+data1['cell_id']
@@ -21,4 +21,4 @@ data1 = data1.rename(columns={'lac_id':'longitude'})
 data1 = data1.rename(columns={'cell_id':'latitude'})
 print(data1.head())
 print(data1.info())
-data1.to_csv('关联数据.csv')
+data1.to_csv('./data/关联数据.csv')

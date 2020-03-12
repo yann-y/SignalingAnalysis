@@ -2,7 +2,9 @@ import pandas as pd
 import numpy as np
 import  re
 import time
-csv_data = pd.read_csv("服创大赛-原始数据.csv", usecols=['timestamp','imsi','lac_id','cell_id'])
+
+# 读取文件
+csv_data = pd.read_csv("./data/服创大赛-原始数据.csv", usecols=['timestamp','imsi','lac_id','cell_id'])
 csv_data.dropna(axis=0, how='any', inplace=True)
 
 # axis：0-行操作（默认），1-列操作
@@ -39,5 +41,7 @@ for index,timeNum in enumerate(csv_data.timestamp):
 csv_data.reset_index(drop=True, inplace=True)
 data_sort = csv_data.sort_values(by=['imsi','timestamp'],ascending=(False,True),inplace=True)
 #print(csv_data.head(10))
-csv_data.to_csv('未关联数据.csv')
+#  生成一个新的文件。若原来的文件存在，可能冲突。
+csv_data.to_csv('./data/未关联数据.csv')
+
 print(csv_data.info())
