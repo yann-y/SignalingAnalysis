@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/image/ico.png">
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/css/starter-template.css" rel="stylesheet">
+    <!-- Jquery -->
+    <script src="/js/jquery.js"></script>
+    <!-- BootStrap -->
+    <script src="/js/bootstrap.min.js"></script>
+    <link href="/css/carousel.css" rel="stylesheet">
+    <link href="/css/dashboard.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/echarts/4.1.0/echarts.min.js"></script>
+    <script src="http://echarts.baidu.com/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
+    <script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=gRQre2F3mI8WT3knGmVSHD7FFGtVqoqG"></script>
+    <title>人群密度图</title>
+</head>
+<body>
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">交通时空大数据分析</a>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link active" href="/heatMap/heatMapBySecond.html">人群密度图<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/modeSpilt/BisectingKMeans.html">出行分析</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/stayAnalyse/stayAnalyse.html">驻留分析</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-sm-3 col-md-1 hidden-xs-down bg-inverse sidebar">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a id="nav-link-1" class="nav-link active" href="/heatMap/heatMapBySecond.html">间隔5秒<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav-link-2" class="nav-link" href="/heatMap/heatMapByMinute.html">间隔1分钟</a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav-link-3" class="nav-link" href="/heatMap/heatMapByHour.html">间隔1小时</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<div id="main" class="offset-sm-1" style="height: 700px;width: 100%"></div>
+<script src="/js/heatMap.js"></script>
+<script th:inline="javascript">
+    var data = [[${coords}]]
+    heatmap(data)
+</script>
+<script>
+    setInterval(function () {
+        $.ajax({
+            async: false,
+            url: "/heatMap/heatMapDataBySecond",
+            type: "post",
+            success: function (data) {
+                heatmap(data);
+            }
+        })
+    }, 10*1000)
+</script>
+</body>
+</html>

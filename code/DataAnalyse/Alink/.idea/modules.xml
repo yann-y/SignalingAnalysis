@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/alink.iml" filepath="$PROJECT_DIR$/alink.iml" />
+      <module fileurl="file://$PROJECT_DIR$/core/alink_core.iml" filepath="$PROJECT_DIR$/core/alink_core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dataAnalyse/dataAnalyse.iml" filepath="$PROJECT_DIR$/dataAnalyse/dataAnalyse.iml" />
+    </modules>
+  </component>
+</project>

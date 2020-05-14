@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <link rel="icon" href="/image/ico.png">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/js/jquery.js"></script>
+    <link href="/css/dashboard.css" rel="stylesheet">
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/echarts.min.js"></script>
+    <title>出行方式分析</title>
+</head>
+<body style="background:#ecf0f1">
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">交通时空大数据分析</a>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link" href="/heatMap/heatMapBySecond.html">人群密度图<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/modeSpilt/GaussianMixture.html">出行分析</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/stayAnalyse/stayAnalyse.html">驻留分析</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-1 hidden-xs-down bg-inverse sidebar">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a id="nav-link-1" class="nav-link active" href="/modeSpilt/GaussianMixture.html">高斯混合<span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav-link-2" class="nav-link" href="/modeSpilt/Kmeans.html">Kmeans</a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav-link-3" class="nav-link " href="/modeSpilt/BisectingKMeans.html">二分Kmeans</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<br>
+<div class="container offset-md-1 container-fluid">
+    <div class="container row">
+        <div class="offset-lg-0 col-lg-6 container-fluid">
+            <div class="card" style="width: 630px">
+                <div class="card-header">
+                    <h2 class="lead">出行方式占比</h2>
+                </div>
+                <div class="card-body">
+                    <div id="pieMap" class="img-responsive" style="height: 500px">
+
+                    </div>
+                </div>
+                <div class="card-footer small text-muted">统计了各种出行方式的占比人数</div>
+            </div>
+        </div >
+        <div class="col-lg-2 col-lg-4 container-fluid">
+            <div class="card" style="width: 660px">
+                <div class="card-header">
+                    <h2 class="lead">出行方式平均距离</h2>
+                </div>
+                <div class="card-body">
+                    <div id="BarMap" class="img-responsive" style="height: 500px">
+                    </div>
+                </div>
+                <div class="card-footer small text-muted">统计了各种出行方式的出行平均距离</div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container row">
+        <div class="offset-lg-0 col-lg-6 container-fluid">
+            <div class="card" style="width: 630px">
+                <div class="card-header">
+                    <h2 class="lead">出行方式平均速度</h2>
+                </div>
+                <div class="card-body">
+                    <div id="speedMap" class="img-responsive" style="height: 500px">
+
+                    </div>
+                </div>
+                <div class="card-footer small text-muted">统计了各种出行方式的出行平均速度</div>
+            </div>
+        </div>
+        <div class="col-lg-4 container-fluid">
+            <div class="card" style="width: 660px">
+                <div class="card-header"> <h2 class="lead">出行方式平均时间</h2></div>
+                <div class="card-body">
+                    <div id="timeMap" class="img-responsive" style="height: 500px">
+
+                    </div>
+                </div>
+                <div class="card-footer small text-muted">统计了各种出行方式的出行平均时间</div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+
+</body>
+</html>
+<script th:inline="javascript">
+    var averData = [[${averData}]]
+</script>
+<script src="/js/modeAnalyse.js"></script>
+<script>
+    setInterval(function () {
+        $.ajax({
+            async: false,
+            url: "/modeSpilt/GaussianMixture",
+            type: "post",
+            success: function (data) {
+                map(data);
+            }
+        })
+    }, 10*1000)
+</script>
