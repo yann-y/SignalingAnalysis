@@ -1,7 +1,7 @@
 spring:
   kafka:
     consumer:
-      group-id: test3
+      group-id: test36
       auto-offset-reset: earliest
       enable-auto-commit: true
       auto-commit-interval: 100
