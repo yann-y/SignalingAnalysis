@@ -93,7 +93,7 @@ a:hover{
     color: #FFFFff;
     text-align: center;
     height: 80px;
-    background-image: url("../images/logoBg.png");
+    /*background-image: url("../image/logoBg.png");*/
     background-size: 100% 100%;
     font-family: "微软雅黑"!important;
 
@@ -188,29 +188,29 @@ a:hover{
 }
 
 .nav_1{
-     background: url("../images/nav_1.png");
+     /*background: url("../image/nav_1.png");*/
  }
 .nav_2{
-    background-image: url("../images/nav_2.png");
+    /*background-image: url("../image/nav_2.png");*/
 }
 .nav_3{
-    background-image: url("../images/nav_3.png");
+    /*background-image: url("../image/nav_3.png");*/
 
 }
 .nav_4{
-    background-image: url("../img/nav_4.png");
+    /*background-image: url("../image/nav_4.png");*/
 }
 .nav_5{
-    background-image: url("../img/nav_5.png");
+    /*background-image: url("../image/nav_5.png");*/
 }
 .nav_6{
-    background-image: url("../img/nav_6.png");
+    /*background-image: url("../image/nav_6.png");*/
 }
 .nav_7{
-    background-image: url("../img/nav_7.png");
+    /*background-image: url("../image/nav_7.png");*/
 }
 .nav_8{
-    background-image: url("../img/nav_9.png");
+    /*background-image: url("../image/nav_9.png");*/
 }
 .nav_active{
     border-bottom: 4px solid #4b8df8;
@@ -988,7 +988,7 @@ border-radius: 3px;
     height: 16px;
     display: inline-block;
     position: relative;
-    background-image: url("../img/nav_7.png");
+    /*background-image: url("../img/nav_7.png");*/
     background-repeat: no-repeat;
     margin-right: 6px;
     top:1px;

@@ -16,7 +16,7 @@
                 <!--用户名-->
                 <property name="username" value="root"/>
                 <!--密码-->
-                <property name="password" value="123456"/>
+                <property name="password" value="123456abc"/>
             </dataSource>
         </environment>
     </environments>

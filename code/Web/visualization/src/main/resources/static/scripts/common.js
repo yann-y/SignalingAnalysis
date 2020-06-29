@@ -96,7 +96,7 @@ function callResourceAdapter(type, url, requestContent, successCallback, failCal
 
   function loaderShow() {
     var loadPage = $('<div class="loading" style="top:30%;left:50%;position: absolute;background: transparent;text-align: center;">' +
-        '<img src="../images/loading.gif" />' +
+        '<img src="../image/loading.gif" />' +
         '</div>');
     $("#content").append(loadPage);
   }

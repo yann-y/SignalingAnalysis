@@ -25,7 +25,7 @@ public class KmeansSort {
         prop.put("bootstrap.servers",kafkaPort);
         // 指定消费者组
         //prop.put("group.id", "cluster-sort02");
-        prop.put("group.id", "cluster-sort09");
+        prop.put("group.id", "cluster-sort10");
         // 指定消费位置: earliest/latest/none
         prop.put("auto.offset.reset", "earliest");
         // 指定消费的key的反序列化方式

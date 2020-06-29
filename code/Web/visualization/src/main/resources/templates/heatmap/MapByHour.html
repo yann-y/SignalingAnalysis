@@ -1,10 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/image/ico.png">
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/css/starter-template.css" rel="stylesheet">
+    <!-- Jquery -->
+    <script src="/js/jquery.js"></script>
+    <!-- BootStrap -->
+    <script src="/js/bootstrap.min.js"></script>
+    <link href="/css/carousel.css" rel="stylesheet">
+    <link href="/css/dashboard.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/echarts/4.1.0/echarts.min.js"></script>
+    <script src="http://echarts.baidu.com/examples/vendors/echarts/extension/bmap.js?_v_=1536959211921"></script>
+    <script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=gRQre2F3mI8WT3knGmVSHD7FFGtVqoqG"></script>
+    <meta charset="UTF-8">
+    <title>数据可视化demo</title>
+    <script src="/scripts/Plugin/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/Plugin/echarts.min.js"></script>
+    <script src="/scripts/Plugin/bmap.min.js"></script>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=Z9KjdRdAm9YkjTfx65mS7aAXdUoEjMWT"></script>
+    <script src="/scripts/common.js"></script>
+    <script src="/scripts/index.js"></script>
+    <script src="/scripts/Plugin/laydate/laydate.js"></script>
+    <title>人群密度图</title>
 </head>
 <body>
-$END$
+<header class="header left">
+    <div class="left nav">
+        <ul>
+            <li class="nav_active"><i class="nav_1"></i><a href="/modeSpilt/GaussianMixture.html">出行分析</a> </li>
+            <li><i class="nav_2"></i><a href="/heatMap/MapByHour.html">人群密度图</a> </li>
+            <!--            <li><i class="nav_3"></i><a href="trend.html">趋势分析</a> </li>-->
+            <!--            <li><i class="nav_4"></i><a href="chronic.html">慢病病人列表</a> </li>-->
+        </ul>
+    </div>
+    <div class="header_center left" style="position:relative">
+
+        <h2><strong>交通时空大数据</strong></h2>
+
+    </div>
+    <div class="right nav text_right">
+        <ul>
+
+        </ul>
+    </div>
+
+</header>
+<div id="main" class="offset-sm-1" style="height: 700px;width: 100%"></div>
+<script src="/js/heatMap.js"></script>
+<script th:inline="javascript">
+    var data = [[${coords}]]
+    heatmap(data)
+</script>
+<script>
+    setInterval(function () {
+        $.ajax({
+            async: false,
+            url: "/heatMap/heatMapDataByHour",
+            type: "post",
+            success: function (data) {
+                heatmap(data);
+            }
+        })
+    }, 60 * 1000)
+</script>
 </body>
 </html>

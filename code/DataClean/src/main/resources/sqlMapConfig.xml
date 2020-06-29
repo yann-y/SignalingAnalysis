@@ -13,7 +13,7 @@
                 
                 <!--注册(特别注意时区) -->
                 <property name="url"
-                          value="jdbc:mysql://192.168.1.103:3306/bigdata?characterEncoding=utf-8&amp;serverTimezone=UTC&amp;useSSL=false"/>
+                          value="jdbc:mysql://192.168.1.103:3306/bigdata?characterEncoding=utf-8&amp;serverTimezone=UTC&amp;useSSL=false&amp;allowPublicKeyRetrieval=true"/>
                 
                 <!--用户名-->
                 <property name="username" value="root"/>
